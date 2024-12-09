@@ -1,7 +1,6 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from typing import List
-import time
 
 class Transaction:
 
@@ -113,11 +112,3 @@ class Client:
             f"\nRendimento dos investimentos: {valor_rendido}"
             "\n====================="
         )
-
-cliente1 = Client("Ruan")
-cliente1.add_account("Gois", 500)
-cliente1.add_investment("Renda Fixa", 100, 0.05, "ruru", datetime(2024, 10, 1))
-# investimento1.last_update = datetime(2024, 10, 1)
-
-cliente1.generate_report()
-cliente1.future_report()
