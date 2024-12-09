@@ -24,6 +24,7 @@ Representa um cliente que possui contas e investimentos.
 - **`datetime`**: Manipulação de datas e horas.
 - **`dateutil`**: Extensão para facilitar cálculos com datas, como diferenças de meses.
 - **`typing`**: Usada para tipagem de listas (`List`) e outros tipos.
+- **`pytest`**: Para testagem do código.
 
 ---
 
