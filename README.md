@@ -26,3 +26,11 @@ Representa um cliente que possui contas e investimentos.
 - **`typing`**: Usada para tipagem de listas (`List`) e outros tipos.
 
 ---
+
+## 📄 **Licença**
+Este projeto está sob a licença MIT - veja o arquivo LICENSE.md para detalhes.
+
+## 🖇️ **Informações de contato**
+
+Nome: Ruan Mateus dos Santos Gois
+Email: ruanmateusdossantosgois@gmail.com
