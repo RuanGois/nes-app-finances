@@ -78,8 +78,9 @@ class Client:
         print(f"\nNova conta criada com sucesso!\nNome da conta: {account_name}.")
         self.accounts.append(nova_conta)
 
-    def add_investment(self, account_name) -> None:
-        novo_investimento = Investment("Jogo do Tigrinho", 100.00, 0.1, self)
+    def add_investment(self, type: str, initial_amount: float, rate_of_return: float, account_name: str, last_update: datetime) -> None:
+        novo_investimento = Investment(type, initial_amount, rate_of_return, self)
+        novo_investimento.last_update = last_update
         print(f"\nNovo investimento iniciado!\nConta: {account_name}\nTipo de investimento: {novo_investimento.type}\nValor investido: {novo_investimento.initial_amount}")
         self.investments.append(novo_investimento)
     
@@ -89,29 +90,34 @@ class Client:
             valor_total += conta.balance
         for investimento in self.investments:
             valor_total += investimento.calculate_value()
-        print(f"Valor total nas contas de {self.name} (saldo e investimentos): {valor_total}.")
+        return valor_total
+    
+    def generate_report(self):
+        print(
+            f"\n*********************\nRelatório financeiro:\n\n*Cliente*: {self.name}"
+            f"\n*Contas*: {[(account.name, account.balance) for account in self.accounts]}."
+            f"\n*Investimentos*: {[(investment.type, investment.date_purchase) for investment in self.investments]}"
+            f"\n*Saldo total do cliente*: {self.get_net_worth()}"
+            "\n*********************"
+            )
+    def future_report(self):
+        valor_investido = 0
+        valor_rendido = 0
+        for investment in self.investments:
+            valor_investido += investment.initial_amount
+            valor_rendido += (investment.current_value - investment.initial_amount)
+        print(
+            "\n=====================\nRelatório de investimentos:"
+            f"\nQuantidade de investimentos ativos: {len(self.investments)}"
+            f"\nValot total investido: {valor_investido}"
+            f"\nRendimento dos investimentos: {valor_rendido}"
+            "\n====================="
+        )
 
-# objeto = Transaction(500, "pix", "pagamento da energia")
 cliente1 = Client("Ruan")
-conta1 = Account("ruru", 500, cliente1)
-cliente1.add_account(conta1, 500)
-# cliente1.add_account("Conta 2 - Ruan")
-investimento1 = Investment("Renda Fixa", 100, 0.05, cliente1)
-investimento1.last_update = datetime(2024, 10, 1)
-print(cliente1.accounts, cliente1.investments)
-print(investimento1.calculate_value())
-investimento1.sell(conta1)
+cliente1.add_account("Gois", 500)
+cliente1.add_investment("Renda Fixa", 100, 0.05, "ruru", datetime(2024, 10, 1))
+# investimento1.last_update = datetime(2024, 10, 1)
 
-cliente1.get_net_worth()
-
-# print(cliente1.investments)
-# conta = Account("Conta do Ruan", 700, cliente1)
-
-# conta.add_transaction(200, 1)
-# time.sleep(3)
-# conta.add_transaction(50, 2)
-# time.sleep(1)
-# conta.get_transactions()
-
-# for i in conta.transactions:
-#     print(i)
+cliente1.generate_report()
+cliente1.future_report()
