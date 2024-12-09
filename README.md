@@ -5,7 +5,7 @@ Este projeto é um sistema para gerenciar contas, transações e investimentos d
 
 ---
 
-## **Funcionalidades**
+## 🚀**Funcionalidades**
 
 #### **1. Transaction**
 Representa uma transação financeira.
@@ -19,7 +19,7 @@ Representa um investimento financeiro de um cliente.
 #### **4. Client**
 Representa um cliente que possui contas e investimentos.
 
-## **Bibliotecas Utilizadas**
+## 📋**Bibliotecas Utilizadas**
 
 - **`datetime`**: Manipulação de datas e horas.
 - **`dateutil`**: Extensão para facilitar cálculos com datas, como diferenças de meses.
